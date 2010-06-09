@@ -1,0 +1,128 @@
+%% LyX 1.6.5 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amstext}
+\usepackage{stmaryrd}
+\input{prooftree}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+  \theoremstyle{definition}
+  \newtheorem{xca}[thm]{Exercise}
+
+\makeatother
+
+\usepackage[italian]{babel}
+
+\begin{document}
+
+\section*{Fondamenti Logici dei Linguaggi Funzionali a.a. 2010-2011}
+
+\begin{xca}
+Dimostrare che la funzione somma non è programmabile con un linguaggio
+dotato solo di: \end{xca}
+\begin{itemize}
+\item $Z^{1}$ (zero) 
+\item $S^{1}$ (successore) 
+\item $P_{i}^{n}$ (proiezioni) 
+\item $C^{n}$ (composizione)\end{itemize}
+\begin{xca}
+Date le seguenti definizioni di termini, scrivere il lambda termine
+per la funzione predecessore (hard!) e per la funzione IsZero. (easy)
+\begin{itemize}
+\item $true = \lambda x.\lambda y.x $
+\item $false = \lambda x.\lambda y.y $
+\item $0 = \lambda y.\lambda x.x $
+\item $S = \lambda z.\lambda y.\lambda x.y(z(y)(x)) $
+\item $ITE = \lambda z.\lambda x.\lambda y.z(x)(y)$
+\end{itemize}
+\end{xca}
+
+\begin{xca}
+Scrivere il predecessore attraverso le funzioni (1->2) e (2->1) che
+convertono la rappresentazione dell'esercizio 2 nella seguente. (Probabilmente
+impossibile)
+\begin{itemize}
+\item $\langle M,N\rangle={\lambda}z.z(M)(N)$
+\item $\pi_{1}(c)=c(true)$
+\item $\pi_{2}(c)=c(false)$
+\item $0={\lambda}x.x$
+\item $S={\lambda}z.\langle false,z\rangle$
+\item $IsZero={\lambda}z.\pi_{1}(z)$\end{itemize} 
+\end{xca}
+
+\begin{xca}
+Dimostrare che la relazione $\beta^{*}$ definita come chiusura transitiva
+di $\beta^{=}$ è la stessa definita con con R transitiva. 
+\end{xca}
+
+\begin{xca}
+Dimostrare che se $M\rightarrow^1M'$ e $N\rightarrow^1N'$ allora $M[x:=N]\rightarrow^1M'[x:=N']$  
+\end{xca}
+
+\begin{xca}
+Dimostrare che se ${\lambda}x.M\rightarrow^1N$ allora
+$N={\lambda}x.M'$ e $M\rightarrow^1M'$ 
+\end{xca}
+
+\begin{xca}
+Verificare che l'interpretazione di ${\lambda}x.M(N)$
+è uguale a quella di $M[x:=N]$ (strutture applicative)  
+\end{xca}
+
+\begin{xca}
+Trovare l'interpretazione di $Y$ (strutture applicative) 
+\end{xca}
+
+\begin{xca}
+Scrivere un algoritmo che inferisca tipo e contesto per lambda termini  
+\end{xca}
+
+\begin{xca}
+Dimostrare il teorema di preservazione della $\beta$-riduzione:\\
+$\forall \; M \; s.t. \; {\Gamma \vdash M:\alpha}, \; \forall \;
+M' s.t. \; M\rightarrow_\beta M'$ allora $ \Gamma \vdash M':\alpha$.
+\end{xca}
+
+\begin{xca}
+Dimostrare che il teorema di confluenza (validità?) continua a valere
+sui termini tipabili  
+\end{xca}
+
+\begin{xca}
+Dimostrare che l'intersezione arbitraria di saturi è un saturo  
+\end{xca}
+
+\begin{xca}
+Nella sola ipotesi di monotonia, mostrare come si trova il massimo
+punto fisso per i saturi  
+\end{xca}
+
+\begin{xca}
+(sistema di tipi con coppie) Mostrare che l'interpretazione minima
+e quella massima non coincidono (hint: cercare nella massima termini
+con variabili)  
+\end{xca}
+
+\begin{xca}
+(sistema di tipi con coppie) Dimostrare il teorema di validità
+\end{xca}
+
+\begin{xca}
+Estendere l'algoritmo di type inference alle coppie  
+\end{xca}
+
+\begin{xca}
+Verificare che $\llbracket b[x:=a]\rrbracket=\llbracket b\rrbracket[x:=\llbracket a\rrbracket]$
+(fortemente richiesto) 
+\end{xca}
+
+\end{document}

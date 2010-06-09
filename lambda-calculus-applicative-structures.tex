@@ -1,0 +1,214 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[english]{babel}
+\usepackage{fontenc}
+\usepackage{graphicx}
+
+\usepackage[dvips]{hyperref}
+
+\author{Silvio Valentini\\
+Dipartimento di Matematica Pura ed Applicata\\
+Università di Padova\\
+via G. Belzoni n.7, I-35131 Padova, Italy\\
+silvio@math.unipd.it}
+\title{Pure Lambda Calculus Models in Applicative Structures}
+\date{April 27, 2004}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+ Just an introduction for students to the models of pure lambda calculus in
+applicative structures.
+\end{abstract}
+
+\section{Combinatoric completeness}
+The basic definition just gives a name to one of the most general situation in
+mathematics.
+
+\begin{definition} Let $A$ be a set, $\cdot$ be a binary operation over $A$,
+i.e., for any $a,b \in A,\, a \cdot b \in A$, and $=_A$ an equivalence relation
+between elements of $A$ which respects $\cdot$. Then the structure $(A, \cdot,
+=_A)$ is called an \emph{applicative structure} over $A$ and the operation
+$\cdot$ an \emph{application}.
+\end{definition}
+
+Note that no property is required on the operation $\cdot$; in the following,
+in order to make the notation simpler we will write $a_1 \cdot a_2 \cdot \dots
+\cdot a_n$ to mean $((a_1 \cdot a_2) \cdot \dots \cdot a_n)$ and we will add
+all the needed parenthesis to avoid any ambiguity.
+
+It is clear that almost every mathematical structure can be thought of like an
+applicative structure. This is the reason why applicative structure are not so
+interesting for us in the most general case; but a sub-class of them can indeed
+be interesting. First, let us define the notion of terms over $A$.
+
+\begin{definition}
+The set $T(A)$ of terms over $A$ is inductively defined by the following rules
+$$T(A) \equiv Var(T) | A | T(A) \cdot T(A)$$
+\end{definition}
+
+Thus terms over $A$ are nothing else than monomial over $A$. We will use the
+notation $t[x_1 \dots x_n]$ to mean a term over $A$ whose variable are among
+$x_1 \dots x_n$ and $t[a_1 \dots a_n]$ to mean the substitution of the
+variables appearing in $t$ by elements of $A$, i.e. $t[a_1 \dots a_n \equiv
+t[x_1 \dots x_n][x_1:=a_1 \dots x_n:=a_n]$.
+
+We can easily extend the equivalence relation $=_A$ to an equivalence relation
+between terms over $A$ by putting
+$$t_1[x_1 \dots x_n] =_{T(A)} t_2[x_1 \dots x_n] \, \text{iff} \, \forall a_1
+\dots a_n \in A \,.\, t_1[a_1 \dots a_n] =_A t_2[a_1 \dots a_n]$$
+
+It is immediate to verify that $=_{T(A)}$ is an equivalence relation between
+terms over $A$.
+
+Finally we give the following definition.
+
+\begin{definition}
+ An applicative structure $(A, \cdot, =_A)$ is \emph{functionally complete} if
+and only if for any term $t[x_1 \dots x_n]$ over $A$ there exists an element
+$f \in A$ such that
+$$f \cdot x_1 \cdot \dots \cdot x_n =_{T(A)} t[x_1 \dots x_n]$$
+\end{definition}
+
+The property of functional completenes is so much interesting that the
+applicative structures which enjoies it deserve a special name and are called
+\emph{combinatory algebras}. Now we can state the main result in this section
+which caracterize combinatory algebras among applicative structures.
+
+\begin{theorem}
+ An applicative structure $(A, \cdot, =_A)$ is functionally complete if and
+only if there exist two elements $K$ and $S$ in $A$ such that
+$$K \cdot x \cdot y =_{T(A)} x \hspace{2em} S \cdot x \cdot y \cdot z =_{T(A)}x
+\cdot z \cdot (y \cdot z)$$
+\end{theorem}
+
+One implication is immediate. In fact, suppose the applicative structure is
+functionally complete and consider the terms $t_K[x,y] \equiv x$ and
+$t_S[x,y,z] \equiv x \cdot z \cdot (y \cdot z)$. Then the elements $K$ and $S$
+respectively associated to the terms $t_K$ and $t_S$ obviously satisfy the
+required conditions. The other implication is not immediate but we can simplify
+its proof if we show first the following lemma.
+
+\begin{lemma}\label{lemma1}
+Let $(A, \cdot, =_A)$ be an applicative structure which contains two elements
+$K$ and $S$ such that
+$$K \cdot x \cdot y =_{T(A)} x \hspace{2em} S \cdot x \cdot y \cdot z =_{T(A)}x
+\cdot z \cdot (y \cdot z)$$
+
+Then, for any term $t[x_1 \dots x_n]$ there exists a term $f[x_1 \dots x_n-1]$
+such that
+$$f[x_1 \dots x_n-1] \cdot x_n =_{T(A)} t[x_1 \dots x_n]$$
+\end{lemma}
+
+In fact, supposing that the previous lemma holds, the main theorem can be
+proved by a simple induction on the number of variables $x_1, \dots ,x_n$ in
+$t$ as follows:
+
+\begin{align*}
+t[x_1 \dots x_n] =_{T(A)}& f_1[x_1 \dots x_{n-1}] \cdot x_n\\
+=_{T(A)}& f_2[x_1 \dots x_{n-2}] \cdot x_{n-1} \cdot x_n\\
+& \dots\\
+=_{T(A)}& f_n \cdot x_1 \cdot \dots \cdot x_{n-1} \cdot x_n
+\end{align*}
+
+In order to prove Lemma~\ref{lemma1} we will make an analysis by cases on the
+possible shape of the term $t$:
+
+\begin{itemize}
+ \item $t[x_1 \dots x_n] \equiv x_n$.
+
+Then put $f[x_1 \dots x_{n-1}] \equiv I \equiv S \cdot K \cdot K$. In fact,
+
+\begin{align*}
+ f[x_1 \dots x_{n-1}] \cdot x_n \equiv & I \cdot x_n\\
+\equiv & S \cdot K \cdot K \cdot x_n\\
+= & K \cdot x_n \cdot (K \cdot x_n)\\
+= & x_n
+\end{align*}
+
+\item $t[x_1 \dots x_n] \equiv x_i$ for some $i < n$.
+
+Then put $f[x_1 \dots x_{n-1}] \equiv K \cdot x_i$. In fact,
+
+\begin{align*}
+f[x_1 \dots x_{n-1}] \cdot x_n \equiv & K \cdot x_i \cdot x_n\\
+= & x_i
+\end{align*}
+
+\item $t[x_1 \dots x_{n-1}] \equiv a$ for some $a \in A$.
+
+Then put $f[x_1 \dots x_{n-1}] \equiv K \cdot a$. In fact,
+
+\begin{align*}
+f[x_1 \dots x_{n-1}]\cdot x_n \equiv & K \cdot a \cdot x_n\\
+= & a
+\end{align*}
+
+\item $t[x_1 \dots x_n] \equiv t_1 [x_1 \dots x_n] \cdot t_2 [x_1 \dots x_n]$.
+
+Then put $$ f[x_1 \dots x_{n-1}] \equiv S \cdot f_1[x_1 \cdots x_{n-1}] \cdot
+f_2[x_1 \cdots x_{n-1}]$$ where $f_1[x_1 \cdots x_{n-1}]$ is the term
+associated with the term $t_1[x_1 \cdots x_{n}]$ and $f_2[x_1 \cdots x_{n-1}]$
+is the term associated with the term $t_2[x_1 \cdots x_{n}]$. In fact,
+
+\begin{align*}
+f[x_1 \dots x_{n-1}] \equiv & S \cdot f_1[x_1 \cdots x_{n-1}] \cdot f_2[x_1
+\cdots x_{n-1}] \cdot x_n\\
+= & f_1[x_1 \cdots x_{n-1}] \cdot x_n \cdot (f_2[x_1 \cdots x_{n-1}] \cdot
+x_n)\\
+= & t_1[x_1 \cdots x_{n}] \cdot t_2[x_1 \cdots x_{n}]
+\end{align*}
+
+\end{itemize}
+
+\section{Interpretation of pure lambda-calculus}
+
+We will show now how to interpret the lambda terms in the set $\Lambda$
+inductively defined by the following rules:
+$$\Lambda \equiv Var_\Lambda | \Lambda(\Lambda) | \lambda x . \Lambda$$
+Into elements of any combinatory algebra $(A, \cdot, K, S, =_A)$.
+
+First, note that the combinatory algebra is functionally complete by the
+previous Theorem. Thus, for any term $t[x_1 \dots x_n, x]$ there is a term
+$f[x_1 \dots x_n]$ such that $f[x_1 \dots x_n] \cdot x = t[x_1 \dots x_n, x]$.
+We will indicate the term $f[x_1 \dots x_n]$ by $\Lambda x . t$.
+
+Then we want to define an interpretation of the elements of $\Lambda$ into
+elements of $A$. To this aim let us suppose to have a map $\rho : Var_\Lambda
+\rightarrow A$ and let us extend it to a new map $\rho^* : T(A) \rightarrow A$,
+where $T(A)$ is the set of terms over $A$ built by using the variables in
+$Var_\Lambda$, by putting
+
+\begin{align}
+\rho^*(x) \equiv & \rho(x)\\
+\rho^*(a) \equiv & a\\
+\rho^*(t \cdot u) \equiv & \rho^*(t) \cdot \rho^*(u)
+\end{align}
+
+Then, we can go on as follows. Let $[-]:\Lambda \rightarrow T(A)$ be the
+following map between lambda terms and terms in $T(A)$.
+
+\begin{align}
+[x] \equiv & x \\
+[M(N)] \equiv & [M] \cdot [N] \\
+[\lambda x \cdot M] \equiv & \Lambda x \cdot [M]
+\end{align}
+
+Now we can obtain the wished interpretation by composing $\rho^*$ and $[-]$ as
+follows:
+$$[M]_\rho \equiv \rho^*([M])$$
+and we obtain a map from lambda terms into elements of $A$.
+
+\end{document}
