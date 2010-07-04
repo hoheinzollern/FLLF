@@ -1,5 +1,3 @@
-%% LyX 1.6.5 created this file.  For more info, see http://www.lyx.org/.
-%% Do not edit unless you really know what you are doing.
 \documentclass[oneside]{amsart}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -14,9 +12,9 @@
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \theoremstyle{plain}
-\newtheorem{thm}{Theorem}
+\newtheorem{thm}{Teorema}
   \theoremstyle{definition}
-  \newtheorem{xca}[thm]{Exercise}
+  \newtheorem{xca}[thm]{Esercizio}
 
 \makeatother
 
@@ -27,16 +25,18 @@
 \section*{Fondamenti Logici dei Linguaggi Funzionali a.a. 2010-2011}
 
 \begin{xca}
-Dimostrare che la funzione somma non è programmabile con un linguaggio
-dotato solo di: \end{xca}
+Dimostrare che la funzione somma non è programmabile con un linguaggio dotato solo di:
 \begin{itemize}
-\item $Z^{1}$ (zero) 
-\item $S^{1}$ (successore) 
-\item $P_{i}^{n}$ (proiezioni) 
-\item $C^{n}$ (composizione)\end{itemize}
+\item $Z^{1}$ (zero)
+\item $S^{1}$ (successore)
+\item $P_{i}^{n}$ (proiezioni)
+\item $C^{n}$ (composizione)
+\end{itemize}
+\end{xca}
+
 \begin{xca}
 Date le seguenti definizioni di termini, scrivere il lambda termine
-per la funzione predecessore (hard!) e per la funzione IsZero. (easy)
+per la funzione predecessore (molto difficile) e per la funzione $IsZero$ (facile):
 \begin{itemize}
 \item $true = \lambda x.\lambda y.x $
 \item $false = \lambda x.\lambda y.y $
@@ -47,82 +47,95 @@ per la funzione predecessore (hard!) e per la funzione IsZero. (easy)
 \end{xca}
 
 \begin{xca}
-Scrivere il predecessore attraverso le funzioni (1->2) e (2->1) che
-convertono la rappresentazione dell'esercizio 2 nella seguente. (Probabilmente
-impossibile)
+Scrivere il predecessore attraverso le funzioni $1 \mapsto 2$ e $2 \mapsto 1$ che
+convertono la rappresentazione del precedente esercizio nella seguente: (probabilmente
+non fattibile)
 \begin{itemize}
 \item $\langle M,N\rangle={\lambda}z.z(M)(N)$
 \item $\pi_{1}(c)=c(true)$
 \item $\pi_{2}(c)=c(false)$
 \item $0={\lambda}x.x$
 \item $S={\lambda}z.\langle false,z\rangle$
-\item $IsZero={\lambda}z.\pi_{1}(z)$\end{itemize} 
+\item $IsZero={\lambda}z.\pi_{1}(z)$
+\end{itemize}
 \end{xca}
 
 \begin{xca}
 Dimostrare che la relazione $\beta^{*}$ definita come chiusura transitiva
-di $\beta^{=}$ è la stessa definita con con R transitiva. 
+di $\beta^{=}$ è la stessa definita con con R transitiva. (???)
 \end{xca}
 
 \begin{xca}
-Dimostrare che se $M\rightarrow^1M'$ e $N\rightarrow^1N'$ allora $M[x:=N]\rightarrow^1M'[x:=N']$  
+Dimostrare che $\rightarrow^{*} = \underset{\rightarrow^{=} \subseteq \mathcal{R}}{\bigcap} \mathcal{R}$,
+dove $\mathcal{R}$ è una relazione transitiva e $\rightarrow^{=}$ è la chiusura riflessiva
+della relazione di $\beta$-riduzione.
 \end{xca}
 
 \begin{xca}
-Dimostrare che se ${\lambda}x.M\rightarrow^1N$ allora
-$N={\lambda}x.M'$ e $M\rightarrow^1M'$ 
+Dimostrare che se $M \rightarrow_1 M'$ e $N \rightarrow_1 N'$, allora $M[x:=N] \rightarrow_1 M'[x:=N']$.
 \end{xca}
 
 \begin{xca}
-Verificare che l'interpretazione di ${\lambda}x.M(N)$
-è uguale a quella di $M[x:=N]$ (strutture applicative)  
+Dimostrare che se ${\lambda}x.M \rightarrow_1 N$, allora
+$N \equiv {\lambda}x.M'$ e $M \rightarrow_1 M'$.
 \end{xca}
 
 \begin{xca}
-Trovare l'interpretazione di $Y$ (strutture applicative) 
+Sia $\llbracket\cdot\rrbracket$ un'interpretazione in un'algebra combinatoria. Verificare
+che $\llbracket {\lambda}x.M(N) \rrbracket = \llbracket M[x:=N] \rrbracket$.
 \end{xca}
 
 \begin{xca}
-Scrivere un algoritmo che inferisca tipo e contesto per lambda termini  
+Trovare un'interpretazione del combinatore di punto fisso $Y$ in un'algebra combinatoria.
 \end{xca}
 
 \begin{xca}
-Dimostrare il teorema di preservazione della $\beta$-riduzione:\\
-$\forall \; M \; s.t. \; {\Gamma \vdash M:\alpha}, \; \forall \;
-M' s.t. \; M\rightarrow_\beta M'$ allora $ \Gamma \vdash M':\alpha$.
+Scrivere un algoritmo che inferisca tipo e contesto per lambda termini.
 \end{xca}
 
 \begin{xca}
-Dimostrare che il teorema di confluenza (validità?) continua a valere
-sui termini tipabili  
+Mostrare che $\underset{S \in \mathcal{SAT}}{\bigcap}S \neq \mathcal{FN}$.
 \end{xca}
 
 \begin{xca}
-Dimostrare che l'intersezione arbitraria di saturi è un saturo  
+Dimostrare il teorema di preservazione della $\beta$-riduzione:
+\[ \forall \; M \; s.t. \; {\Gamma \vdash M:\alpha}, \; \forall \;
+M' s.t. \; M\rightarrow_\beta M' \quad\text{allora}\quad \Gamma \vdash M':\alpha \]
+\end{xca}
+
+\begin{xca}
+Dimostrare che il teorema di confluenza continua a valere su lambda termini tipabili.
+\end{xca}
+
+\begin{xca}
+Dimostrare che l'intersezione arbitraria di saturi è un saturo.
 \end{xca}
 
 \begin{xca}
 Nella sola ipotesi di monotonia, mostrare come si trova il massimo
-punto fisso per i saturi  
+punto fisso per i saturi.
 \end{xca}
 
 \begin{xca}
-(sistema di tipi con coppie) Mostrare che l'interpretazione minima
-e quella massima non coincidono (hint: cercare nella massima termini
-con variabili)  
+Dimostrare che $\llbracket\alpha\times\beta\rrbracket_{max} \in \mathcal{SAT}$
+usando direttamente la definizione di insieme saturo.
 \end{xca}
 
 \begin{xca}
-(sistema di tipi con coppie) Dimostrare il teorema di validità
+Mostrare che $\llbracket\alpha\times\beta\rrbracket_{min}$ e
+$\llbracket\alpha\times\beta\rrbracket_{max}$ non coincidono.
 \end{xca}
 
 \begin{xca}
-Estendere l'algoritmo di type inference alle coppie  
+Dimostrare il teorema di validità per il tipo prodotto cartesiano.
 \end{xca}
 
 \begin{xca}
-Verificare che $\llbracket b[x:=a]\rrbracket=\llbracket b\rrbracket[x:=\llbracket a\rrbracket]$
-(fortemente richiesto) 
+Estendere l'algoritmo di type inference alle coppie.
+\end{xca}
+
+\begin{xca}
+Verificare che $\llbracket b[x:=a] \rrbracket = \llbracket b\rrbracket[x:=\llbracket a\rrbracket]$.
 \end{xca}
 
 \end{document}
