@@ -4,7 +4,7 @@
 \usepackage{amsthm}
 \usepackage{amstext}
 \usepackage{stmaryrd}
-\input{prooftree}
+%\input{prooftree}
 
 \makeatletter
 
@@ -30,8 +30,13 @@ Dimostrare che la funzione somma non è programmabile con un linguaggio dotato s
 \item $Z^{1}$ (zero)
 \item $S^{1}$ (successore)
 \item $P_{i}^{n}$ (proiezioni)
-\item $C^{n}$ (composizione)
+\item $C^{n}[F^{m}, G_{1}^{n}, \ldots, G_{m}^{n}]$ (composizione)
 \end{itemize}
+\end{xca}
+
+\begin{xca}
+Scrivere i programmi somma, prodotto, esponenziale usando $Z^{1}$, $S^{1}$, $P_{i}^{n}$,
+$C^{n}[F^{m}, G_{1}^{n}, \ldots, G_{m}^{n}]$, $R^{n+1}[K^{n}, G^{n+2}]$.
 \end{xca}
 
 \begin{xca}
@@ -94,6 +99,10 @@ Scrivere un algoritmo che inferisca tipo e contesto per lambda termini.
 \end{xca}
 
 \begin{xca}
+Provare a tipare $Y = \lambda f.(\lambda x.f(x(x)))(\lambda x.f(x(x)))$.
+\end{xca}
+
+\begin{xca}
 Mostrare che $\underset{S \in \mathcal{SAT}}{\bigcap}S \neq \mathcal{FN}$.
 \end{xca}
 
@@ -108,7 +117,7 @@ Dimostrare che il teorema di confluenza continua a valere su lambda termini tipa
 \end{xca}
 
 \begin{xca}
-Dimostrare che l'intersezione arbitraria di saturi è un saturo.
+Verificare che l'intersezione arbitraria di saturi è un saturo.
 \end{xca}
 
 \begin{xca}
@@ -131,11 +140,24 @@ Dimostrare il teorema di validità per il tipo prodotto cartesiano.
 \end{xca}
 
 \begin{xca}
+Verificare che $\llbracket b[x:=a] \rrbracket = \llbracket b\rrbracket[x:=\llbracket a\rrbracket]$.
+\end{xca}
+
+\begin{xca}
 Estendere l'algoritmo di type inference alle coppie.
 \end{xca}
 
 \begin{xca}
-Verificare che $\llbracket b[x:=a] \rrbracket = \llbracket b\rrbracket[x:=\llbracket a\rrbracket]$.
+Mostrare che nel sistema $\Lambda^{\rightarrow,\times}$ esiste qualche lambda termine
+in più rispetto a $\Lambda^{\rightarrow}$.
+\end{xca}
+
+\begin{xca}
+Dimostrare che $Boole = \mathbf{1}\oplus\mathbf{1}$.
+\end{xca}
+
+\begin{xca}
+Definire i ``vecchi'' tipi in termini di $\Pi,\rightarrow$.
 \end{xca}
 
 \end{document}
